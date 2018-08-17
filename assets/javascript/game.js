@@ -18,13 +18,13 @@ document.onkeyup = function(event) {
 
         if (userGuess === computerGuess) {
             wins++;
-            guessesLeft = 0;
+            guessesLeft = 9;
             gameOver = true;
         } else if (userGuess != computerGuess) {
             guessesLeft--;
         }
 
-        if (guessesLeft === 0) {
+        if ((guessesLeft === 0) && (userGuess != computerGuess)) {
             guessesLeft = guessesLeft + 9;
             losses++;
             gameOver = true;
@@ -45,7 +45,6 @@ document.onkeyup = function(event) {
 
         if (gameOver) {
             computerGuess = computerLetters[Math.floor(Math.random() * computerLetters.length)];
-            guessesLeft = 9;
             guesses.textContent = 'Your guesses so far: ';
             gameOver = false;
         }
